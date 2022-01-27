@@ -1,12 +1,12 @@
-grid = [[0, 0, 6, 0, 0, 0, 1, 0, 0],
-        [2, 0, 0, 7, 0, 0, 3, 0, 0],
-        [0, 5, 3, 0, 0, 0, 0, 4, 8],
-        [0, 0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 3, 1, 0, 8, 0, 0, 2, 0],
-        [8, 0, 0, 0, 0, 0, 0, 9, 4],
-        [0, 0, 0, 5, 0, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0, 9, 0, 0, 6],
-        [9, 6, 2, 0, 0, 0, 0, 0, 0]]
+grid = [[0, 0, 0, 0, 0, 3, 7, 1, 0],
+        [2, 0, 3, 1, 4, 0, 0, 0, 8],
+        [4, 0, 1, 7, 8, 0, 3, 0, 0],
+        [5, 1, 9, 0, 7, 0, 0, 0, 0],
+        [0, 3, 0, 0, 0, 1, 4, 9, 0],
+        [0, 2, 0, 0, 0, 9, 0, 0, 0],
+        [0, 0, 0, 6, 0, 0, 0, 0, 5],
+        [0, 5, 0, 4, 0, 2, 0, 6, 9],
+        [1, 4, 0, 0, 0, 0, 0, 2, 0]]
 
 
 def valid(grid, z, y, x):
@@ -30,7 +30,8 @@ def valid(grid, z, y, x):
     return True
 
 
-def solver(grid):
+def solver(suduko_grid:list):
+
     # iterate through every square
     for y in range(9):
         for x in range(9):
@@ -49,9 +50,17 @@ def solver(grid):
                         grid[y][x] = 0
                 # returns to previous space if not a valid number, backtracking to the problem value
                 return
-    # This is only called once each value has been inputted
+
+
+
+    counter = 0
+
+    #This just solved for multiple solutions basically
     for line in grid:
         print(line)
-
+        if counter == 8:
+            print("\n\n")
+            counter = 0
+        counter += 1
 
 solver(grid)
